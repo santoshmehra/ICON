@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Amatya Advisors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iconPurple: '#7C4DFF',
+                        iconCyan: '#00C4FF',
+                        iconDark: '#0B0014',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        goudy: ['Goudy Old Style', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+            background: #0B0014;
+            color: #cbd5e1;
+            font-family: 'Outfit', sans-serif;
+            background-image: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #0B0014 100%);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #7C4DFF;
+            background: rgba(124, 77, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-iconDark/90 backdrop-blur-md border-b border-white/10 transition-all duration-500">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html">
+                    <img src="brand-logo.png" alt="Amatya Advisors & ICON Capital" class="h-14 w-auto object-contain">
+                </a>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-base font-bold font-sans text-slate-300">
+                <a href="index.html" class="hover:text-iconCyan transition-colors">Home</a>
+                <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors">IPO Advisory</a>
+                <a href="private-equity.html" class="hover:text-iconCyan transition-colors">Private Equity</a>
+                <a href="private-credit.html" class="hover:text-iconCyan transition-colors">Private Credit</a>
+                <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors">ICON Capital</a>
+                <a href="contact.html" class="text-iconCyan transition-colors">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden">
+        <!-- Abstract Network Background (CSS Fallback) -->
+        <div class="absolute inset-0 z-0 opacity-30">
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-iconPurple/20 blur-[150px] rounded-full"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-iconCyan/20 blur-[150px] rounded-full"></div>
+            <!-- Future Image Placeholder -->
+            <!-- <img src="india_network_map.png" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen" alt="India Network"> -->
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl lg:text-7xl font-serif font-bold text-white mb-6">
+                Contact Us
+            </h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
+                Connect with our team for strategic advisory and capital solutions.
+            </p>
+        </div>
+    </header>
+
+
+
+    <!-- Contact Section -->
+    <section class="py-16 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <h2 class="text-3xl font-serif font-bold text-white mb-8">Get In Touch</h2>
+
+                    <div class="glass-panel p-8 rounded-2xl space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-iconPurple/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-location-dot text-iconPurple text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Office Address</h3>
+                                <p class="text-slate-400 leading-relaxed">
+                                    #4A - The Law Chambers, Silver Cloud,<br>
+                                    Opp. KIMS Hospital, Raidurg,<br>
+                                    Hyderabad, Telangana, India - 500089
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-iconCyan/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-envelope text-iconCyan text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Email Us</h3>
+                                <a href="mailto:santosh@iconcapital.club"
+                                    class="text-slate-400 hover:text-iconCyan transition-colors">
+                                    santosh@iconcapital.club
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-brands fa-linkedin-in text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Connect on LinkedIn</h3>
+                                <a href="#" class="text-slate-400 hover:text-iconCyan transition-colors">
+                                    Amatya Advisors
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="glass-panel p-8 rounded-2xl bg-gradient-to-br from-iconPurple/10 to-transparent border-iconPurple/20">
+                        <h3 class="text-xl font-bold text-white mb-4">Join Our Network</h3>
+                        <p class="text-slate-400 mb-6">
+                            Stay updated on the latest Pre-IPO opportunities and market insights.
+                        </p>
+                        <a href="https://chat.whatsapp.com/your-group-link" target="_blank"
+                            class="inline-flex items-center gap-2 text-iconCyan font-bold hover:text-white transition-colors">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Join WhatsApp Community
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-panel p-8 lg:p-10 rounded-3xl">
+                    <h2 class="text-2xl font-bold text-white mb-6">Send a Message</h2>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">My Name is</label>
+                                <input type="text" class="form-input" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">I work with</label>
+                                <input type="text" class="form-input" placeholder="Company Name">
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">My Email is</label>
+                                <input type="email" class="form-input" placeholder="email@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">My Phone Number is</label>
+                                <input type="tel" class="form-input" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">I am interested in</label>
+                            <select class="form-input appearance-none">
+                                <option class="text-black">IPO Advisory Services</option>
+                                <option class="text-black">Private Equity / Growth Capital</option>
+                                <option class="text-black">Private Debt Solutions</option>
+                                <option class="text-black">Investing in Pre-IPO Funds (ICON Capital)</option>
+                                <option class="text-black">Other Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Message</label>
+                            <textarea rows="4" class="form-input"
+                                placeholder="Tell us more about your requirements..."></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-4 bg-iconPurple text-white rounded-xl font-bold hover:bg-iconCyan hover:text-black transition-all duration-300 shadow-lg shadow-iconPurple/25">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/40 text-slate-400 py-16 border-t border-white/5 font-sans relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-20">
+                <!-- Col 1: Brand -->
+                <div class="space-y-6">
+                    <!-- Logo -->
+                    <a href="index.html" class="block">
+                        <img src="brand-logo.png" alt="Amatya Advisors"
+                            class="h-16 w-auto object-contain opacity-90 hover:opacity-100 transition">
+                    </a>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <nav class="flex flex-col space-y-3 text-sm font-medium">
+                        <a href="index.html" class="hover:text-iconCyan transition-colors w-fit">Home</a>
+                        <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors w-fit">IPO Advisory</a>
+                        <a href="private-equity.html" class="hover:text-iconCyan transition-colors w-fit">Private
+                            Equity</a>
+                        <a href="private-credit.html" class="hover:text-iconCyan transition-colors w-fit">Private
+                            Credit</a>
+                        <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors w-fit">ICON Capital</a>
+                        <a href="contact.html" class="text-iconCyan transition-colors w-fit">Contact Us</a>
+                    </nav>
+                </div>
+
+                <!-- Col 3: Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Get In Touch</h3>
+                    <div class="space-y-4 text-sm">
+                        <!-- Address -->
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-iconPurple mt-1"></i>
+                            <p class="leading-relaxed">
+                                #4A - The Law Chambers, Silver Cloud,<br>
+                                Opp. KIMS Hospital, Raidurg,<br>
+                                Hyderabad, Telangana, India - 500089
+                            </p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-iconPurple"></i>
+                            <a href="mailto:santosh@iconcapital.club" class="hover:text-iconCyan transition-colors">
+                                santosh@iconcapital.club
+                            </a>
+                        </div>
+
+                        <!-- Social -->
+                        <div class="pt-4">
+                            <h4 class="text-white font-bold mb-3">Follow us on</h4>
+                            <div class="flex gap-3">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-white hover:bg-[#0077b5] transition-colors">
+                                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-white/10 mt-16 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Amatya Advisors. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

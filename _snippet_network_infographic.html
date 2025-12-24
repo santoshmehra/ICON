@@ -1,0 +1,187 @@
+<section class="py-20 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-iconPurple/5 rounded-full blur-3xl -z-10">
+    </div>
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-iconCyan/5 rounded-full blur-3xl -z-10">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4 font-serif">Intermediaries for IPO</h2>
+            <p class="text-slate-400 font-sans max-w-2xl mx-auto">A synchronized network of professionals ensuring a
+                seamless listing process.</p>
+        </div>
+
+        <div class="relative w-full max-w-5xl mx-auto h-[600px] lg:h-[700px] flex items-center justify-center">
+
+            <!-- SVG Connections Layer -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+                <defs>
+                    <linearGradient id="gradLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:var(--iconPurple);stop-opacity:0.2" />
+                        <stop offset="100%" style="stop-color:var(--iconCyan);stop-opacity:0.2" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                        <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- Central Hub Connections -->
+                <g id="hub-connections"></g>
+                <!-- Ring Connections -->
+                <g id="ring-connections"></g>
+            </svg>
+
+            <!-- Central Hub -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center">
+                <div
+                    class="w-32 h-32 lg:w-40 lg:h-40 rounded-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center justify-center relative group cursor-default">
+                    <div
+                        class="absolute inset-0 rounded-full border border-iconPurple/30 animate-[spin_10s_linear_infinite]">
+                    </div>
+                    <div
+                        class="absolute inset-2 rounded-full border border-iconCyan/30 animate-[spin_15s_linear_infinite_reverse]">
+                    </div>
+                    <div class="text-white">
+                        <div class="text-3xl mb-1"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="text-sm font-bold tracking-wider">IPO<br>SUCCESS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orbiting Nodes Container -->
+            <div id="nodes-container" class="absolute inset-0 pointer-events-none">
+                <!-- Nodes will be injected here via JS -->
+            </div>
+
+            <!-- Detail Panel (Floating) -->
+            <div id="detail-panel"
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-8 opacity-0 transition-all duration-500 pointer-events-auto max-w-md w-full">
+                <div
+                    class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center shadow-2xl relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-iconPurple via-white to-iconCyan">
+                    </div>
+                    <h3 id="detail-title" class="text-2xl font-bold text-white mb-2 font-serif"></h3>
+                    <p id="detail-desc" class="text-slate-300 text-sm leading-relaxed font-sans"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    const intermediaries = [
+        { id: 'brlm', icon: 'fa-building-columns', label: 'BRLM', desc: 'Lead merchant bankers for syndication, roadshows, and post-issue compliance.' },
+        { id: 'legal', icon: 'fa-scale-balanced', label: 'Legal Attorneys', desc: 'DRHP preparation and due diligence; international counsel when required.' },
+        { id: 'pr', icon: 'fa-bullhorn', label: 'PR Agency', desc: 'SEBI-mandated ads, investor outreach, roadshows, and press engagement.' },
+        { id: 'rta', icon: 'fa-id-card', label: 'RTA', desc: 'DMAT, bid collection, allotment, and post-issue investor services.' },
+        { id: 'research', icon: 'fa-chart-line', label: 'Industry Reports', desc: 'Prepared by professional agencies; essential components supporting DRHP.' },
+        { id: 'bank', icon: 'fa-piggy-bank', label: 'Sponsor Bank', desc: 'Bankers to the issue enabling escrow accounts for IPO proceeds.' },
+        { id: 'audit', icon: 'fa-user-check', label: 'Auditors', desc: 'Peer-reviewed auditors proficient in IPOs and IND AS financials.' }
+    ];
+
+    const container = document.getElementById('nodes-container');
+    const hubConnections = document.getElementById('hub-connections');
+    const ringConnections = document.getElementById('ring-connections');
+    const detailPanel = document.getElementById('detail-panel');
+    const detailTitle = document.getElementById('detail-title');
+    const detailDesc = document.getElementById('detail-desc');
+
+    // Radius for the orbit
+    const radius = window.innerWidth < 768 ? 130 : 220;
+    const centerX = container.offsetWidth / 2;
+    const centerY = container.offsetHeight / 2;
+
+    intermediaries.forEach((item, index) => {
+        const angle = (index * (360 / intermediaries.length)) - 90; // Start from top
+        const radian = angle * (Math.PI / 180);
+        const x = centerX + radius * Math.cos(radian);
+        const y = centerY + radius * Math.sin(radian);
+
+        // Create Node Button
+        const btn = document.createElement('button');
+        btn.className = `absolute w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-iconPurple hover:border-iconPurple hover:scale-110 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all duration-300 group pointer-events-auto z-30`;
+        btn.style.left = `${x}px`;
+        btn.style.top = `${y}px`;
+        btn.style.transform = 'translate(-50%, -50%)';
+        btn.onclick = () => activateNode(index);
+
+        btn.innerHTML = `
+            <i class="fa-solid ${item.icon} text-lg lg:text-xl group-hover:text-white transition-colors"></i>
+            <span class="absolute ${x > centerX ? 'left-full ml-3' : 'right-full mr-3'} top-1/2 -translate-y-1/2 whitespace-nowrap text-xs lg:text-sm font-semibold text-slate-300 group-hover:text-white bg-black/50 px-2 py-1 rounded backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">${item.label}</span>
+        `;
+        container.appendChild(btn);
+
+        // Create Hub Connection Line
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", "50%");
+        line.setAttribute("y1", "50%");
+        line.setAttribute("x2", x);
+        line.setAttribute("y2", y);
+        line.setAttribute("stroke", "white");
+        line.setAttribute("stroke-opacity", "0.1");
+        line.setAttribute("stroke-width", "1");
+        line.id = `line-hub-${index}`;
+        hubConnections.appendChild(line);
+
+        // Create Ring Connection (to next node)
+        const nextIndex = (index + 1) % intermediaries.length;
+        const nextAngle = (nextIndex * (360 / intermediaries.length)) - 90;
+        const nextRadian = nextAngle * (Math.PI / 180);
+        const nextX = centerX + radius * Math.cos(nextRadian);
+        const nextY = centerY + radius * Math.sin(nextRadian);
+
+        const ringLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        ringLine.setAttribute("x1", x);
+        ringLine.setAttribute("y1", y);
+        ringLine.setAttribute("x2", nextX);
+        ringLine.setAttribute("y2", nextY);
+        ringLine.setAttribute("stroke", "white");
+        ringLine.setAttribute("stroke-opacity", "0.1");
+        ringLine.setAttribute("stroke-width", "1");
+        ringLine.setAttribute("stroke-dasharray", "4 4");
+        ringConnections.appendChild(ringLine);
+    });
+
+    function activateNode(index) {
+        const item = intermediaries[index];
+
+        // Update Detail Panel
+        detailTitle.innerText = item.label;
+        detailDesc.innerText = item.desc;
+        detailPanel.classList.remove('opacity-0', 'translate-y-8');
+
+        // Highlight Active Node
+        const buttons = container.querySelectorAll('button');
+        buttons.forEach((b, i) => {
+            if (i === index) {
+                b.classList.add('bg-iconPurple', 'border-iconPurple', 'scale-110', 'shadow-[0_0_20px_rgba(168,85,247,0.5)]');
+                b.querySelector('span').classList.remove('opacity-0');
+            } else {
+                b.classList.remove('bg-iconPurple', 'border-iconPurple', 'scale-110', 'shadow-[0_0_20px_rgba(168,85,247,0.5)]');
+                b.querySelector('span').classList.add('opacity-0');
+            }
+        });
+
+        // Highlight Connections
+        const lines = hubConnections.querySelectorAll('line');
+        lines.forEach((l, i) => {
+            if (i === index) {
+                l.setAttribute('stroke', '#a855f7');
+                l.setAttribute('stroke-opacity', '0.8');
+                l.setAttribute('stroke-width', '2');
+            } else {
+                l.setAttribute('stroke', 'white');
+                l.setAttribute('stroke-opacity', '0.1');
+                l.setAttribute('stroke-width', '1');
+            }
+        });
+    }
+</script>

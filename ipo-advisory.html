@@ -1,0 +1,893 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO Advisory - Amatya Advisors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iconPurple: '#7C4DFF',
+                        iconCyan: '#00C4FF',
+                        iconDark: '#0B0014',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        goudy: ['Goudy Old Style', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/goudy-old-style');
+
+        body {
+            background: #0B0014;
+            color: #cbd5e1;
+            overflow-x: hidden;
+            font-family: 'Goudy Old Style', Georgia, serif;
+        }
+
+        .step-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+            margin-top: 1rem;
+        }
+
+        .step-content.active {
+            max-height: 800px;
+            opacity: 1;
+        }
+
+        /* Map Pin Marker */
+        .map-pin {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 30;
+        }
+
+        .map-pin:hover {
+            transform: translateY(-10px) scale(1.08);
+        }
+
+        .map-pin.active {
+            transform: translateY(-15px) scale(1.15);
+            filter: drop-shadow(0 15px 40px rgba(124, 77, 255, 0.8));
+        }
+
+        .pin-head {
+            width: 70px;
+            height: 70px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .pin-number {
+            transform: rotate(45deg);
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .pin-shadow {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            filter: blur(6px);
+        }
+
+        /* Icon Badge */
+        .icon-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #0B0014;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 35;
+        }
+
+        /* Connecting Lines */
+        .connector-line {
+            position: absolute;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(124, 77, 255, 0.3), transparent);
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .connector-line-left {
+            right: 100%;
+            width: 3rem;
+        }
+
+        .connector-line-right {
+            left: 100%;
+            width: 3rem;
+        }
+
+        /* Straight Road Styling */
+        .road-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 100%;
+            top: 0;
+        }
+
+        .road-base {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(124, 77, 255, 0.15) 0%,
+                    rgba(0, 196, 255, 0.15) 30%,
+                    rgba(124, 77, 255, 0.15) 60%,
+                    rgba(0, 196, 255, 0.15) 100%);
+            border-radius: 25px;
+        }
+
+        .road-center-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: repeating-linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0.2) 0px,
+                    rgba(255, 255, 255, 0.2) 20px,
+                    transparent 20px,
+                    transparent 35px);
+            animation: dash 2s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                background-position: 0 35px;
+            }
+        }
+
+        /* Scroll-triggered animations */
+        .milestone-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .milestone-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover preview */
+        .title-container:hover .hover-preview {
+            opacity: 1;
+            max-height: 100px;
+        }
+
+        .hover-preview {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .connector-line {
+                display: none;
+            }
+        }
+
+        /* Intermediaries Accordion */
+        .intermediary-desc {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out, margin-top 0.4s ease;
+            margin-top: 0;
+        }
+
+        .intermediary-desc.active {
+            max-height: 150px;
+            /* Adjust as needed */
+            opacity: 1;
+            margin-top: 0.75rem;
+        }
+
+        .intermediary-card {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-iconDark/90 backdrop-blur-md border-b border-white/10 transition-all duration-500">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html">
+                    <img src="brand-logo.png" alt="Amatya Advisors & ICON Capital" class="h-14 w-auto object-contain">
+                </a>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-base font-bold font-sans text-slate-300">
+                <a href="index.html" class="hover:text-iconCyan transition-colors">Home</a>
+                <a href="ipo-advisory.html" class="text-iconCyan transition-colors">IPO Advisory</a>
+                <a href="private-equity.html" class="hover:text-iconCyan transition-colors">Private Equity</a>
+                <a href="private-credit.html" class="hover:text-iconCyan transition-colors">Private Credit</a>
+                <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors">ICON Capital</a>
+                <a href="contact.html" class="hover:text-iconCyan transition-colors">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-12 lg:pt-40 lg:pb-20 overflow-hidden bg-iconDark">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0B0014] via-[#1a0b2e] to-[#240046] z-0"></div>
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl lg:text-6xl font-serif font-bold text-white mb-4">
+                IPO Advisory
+            </h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                From Readiness to Listing: A 360° End-to-End Approach
+            </p>
+        </div>
+    </header>
+
+    <!-- Interactive IPO Roadmap -->
+    <section class="py-20 bg-transparent">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4" style="font-family: 'Goudy Old Style', Georgia, serif;">
+                    Our IPO Advisory: From Readiness to Listing</h2>
+                <p class="mt-4 text-slate-300 max-w-4xl mx-auto leading-relaxed font-sans">
+                    Our IPO advisory framework is rigorous and timeline-driven, ensuring companies are not just
+                    "market-ready" but "market-favored."
+                </p>
+                <p class="text-sm text-slate-400 mt-4 font-sans">
+                    <i class="fa-solid fa-hand-pointer mr-2"></i>Click on any milestone to view details
+                    <span class="mx-2">•</span>
+                    <i class="fa-solid fa-eye mr-2"></i>Hover for quick preview
+                </p>
+            </div>
+
+            <!-- Timeline Infographic -->
+            <div class="grid md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto">
+                <!-- Mainboard IPO -->
+                <div
+                    class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-iconCyan/50 transition relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-iconCyan/10 blur-3xl rounded-full group-hover:bg-iconCyan/20 transition">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fa-solid fa-building-columns text-3xl text-iconCyan"></i>
+                            <h3 class="text-2xl font-bold text-white">Mainboard IPO</h3>
+                        </div>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-5xl font-bold text-iconCyan">8–12</span>
+                            <span class="text-xl text-slate-400">months</span>
+                        </div>
+                        <div class="relative h-3 bg-white/10 rounded-full overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-iconCyan to-blue-500 rounded-full animate-pulse">
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-3 font-sans">Comprehensive regulatory process for
+                            large-scale public offerings</p>
+                    </div>
+                </div>
+
+                <!-- SME IPO -->
+                <div
+                    class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-iconPurple/50 transition relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-iconPurple/10 blur-3xl rounded-full group-hover:bg-iconPurple/20 transition">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fa-solid fa-rocket text-3xl text-iconPurple"></i>
+                            <h3 class="text-2xl font-bold text-white">SME IPO</h3>
+                        </div>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-5xl font-bold text-iconPurple">4–6</span>
+                            <span class="text-xl text-slate-400">months</span>
+                        </div>
+                        <div class="relative h-3 bg-white/10 rounded-full overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-iconPurple to-purple-600 rounded-full w-[55%] animate-pulse">
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-3 font-sans">Streamlined process for small and medium
+                            enterprises</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roadmap Timeline - Straight Road -->
+            <div class="relative max-w-5xl mx-auto py-12" id="roadmap-container" style="min-height: 900px;">
+
+                <!-- Straight Road -->
+                <div class="road-container">
+                    <div class="road-base"></div>
+                    <div class="road-center-line"></div>
+                </div>
+
+                <!-- Milestones Container -->
+                <div class="relative z-20 space-y-32 pt-8">
+
+                    <!-- Phase 1: Planning (Left) -->
+                    <div class="milestone-item flex items-center justify-center">
+                        <div class="relative flex items-center gap-8 w-full max-w-4xl">
+                            <!-- Title (Left) -->
+                            <div class="flex-1 text-right title-container">
+                                <div class="cursor-pointer" onclick="toggleStep(1)">
+                                    <h4 class="text-2xl font-bold text-white mb-2">Phase 1: Planning & Strategic
+                                        Assessment</h4>
+                                    <p class="text-sm text-slate-400 font-sans">Foundation & Strategy</p>
+                                </div>
+                            </div>
+
+                            <!-- Pin Marker (Center on Road) -->
+                            <div class="relative">
+                                <div class="connector-line connector-line-left"></div>
+                                <div onclick="toggleStep(1)" class="map-pin flex-shrink-0" id="marker-1">
+                                    <div
+                                        class="pin-head bg-gradient-to-br from-iconPurple via-purple-600 to-iconPurple border-4 border-white">
+                                        <div class="pin-number">01</div>
+                                    </div>
+                                    <div class="pin-shadow"></div>
+                                    <div class="icon-badge bg-iconPurple">
+                                        <i class="fa-solid fa-compass-drafting text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content Panel (Right) -->
+                            <div class="flex-1">
+                                <div class="step-content" id="content-1">
+                                    <div
+                                        class="bg-gradient-to-br from-iconPurple/20 to-purple-900/20 backdrop-blur-xl rounded-2xl p-6 border-2 border-iconPurple/40 shadow-2xl text-left">
+
+                                        <div class="space-y-4 font-sans">
+                                            <div>
+                                                <h5 class="text-iconPurple font-bold text-sm mb-1">Industry Benchmarking
+                                                </h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Deep-dive market
+                                                    assessment to understand competitive density, product
+                                                    differentiators, and industry disruption trends.</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconPurple font-bold text-sm mb-1">Peer Analysis</h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Identification of
+                                                    listed and unlisted peers to benchmark valuations and analyze recent
+                                                    IPO or PE activity in the sector.</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconPurple font-bold text-sm mb-1">Valuation Modeling
+                                                </h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Estimating valuation
+                                                    and potential IPO size by analyzing YoY growth, competitive
+                                                    advantages, and financial ratios.</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconPurple font-bold text-sm mb-1">Intermediary
+                                                    Selection</h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Appointing ecosystem
+                                                    partners—Merchant Bankers, Legal Counsels, PR Agencies, and Market
+                                                    Research firms.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Due Diligence (Right) -->
+                    <div class="milestone-item flex items-center justify-center">
+                        <div class="relative flex items-center gap-8 w-full max-w-4xl">
+                            <!-- Content Panel (Left) -->
+                            <div class="flex-1">
+                                <div class="step-content" id="content-2">
+                                    <div
+                                        class="bg-gradient-to-br from-iconCyan/20 to-blue-900/20 backdrop-blur-xl rounded-2xl p-6 border-2 border-iconCyan/40 shadow-2xl text-right">
+
+                                        <div class="space-y-4 font-sans">
+                                            <div>
+                                                <h5 class="text-iconCyan font-bold text-sm mb-1">Data Room Management
+                                                </h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Overseeing the VDR
+                                                    population with critical documents for legal and financial due
+                                                    diligence.</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconCyan font-bold text-sm mb-1">DRHP Drafting</h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Collaborating with
+                                                    KMPs to shape the narrative in the Draft Red Herring Prospectus
+                                                    (DRHP).</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconCyan font-bold text-sm mb-1">Capital Structure</h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Advising on the split
+                                                    between Fresh Issue (Primary capital) and Offer for Sale (Secondary
+                                                    exit).</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconCyan font-bold text-sm mb-1">Filing</h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Completion and filing
+                                                    of the DRHP with SEBI and Stock Exchanges.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pin Marker (Center on Road) -->
+                            <div class="relative">
+                                <div class="connector-line connector-line-right"></div>
+                                <div onclick="toggleStep(2)" class="map-pin flex-shrink-0" id="marker-2">
+                                    <div
+                                        class="pin-head bg-gradient-to-br from-iconCyan via-blue-500 to-iconCyan border-4 border-white">
+                                        <div class="pin-number">02</div>
+                                    </div>
+                                    <div class="pin-shadow"></div>
+                                    <div class="icon-badge bg-iconCyan">
+                                        <i class="fa-solid fa-folder-open text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Title (Right) -->
+                            <div class="flex-1 title-container">
+                                <div class="cursor-pointer" onclick="toggleStep(2)">
+                                    <h4 class="text-2xl font-bold text-white mb-2">Phase 2: Due Diligence &
+                                        Documentation</h4>
+                                    <p class="text-sm text-slate-400 font-sans">Execution & Filing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: SEBI Approval & Listing (Left) -->
+                    <div class="milestone-item flex items-center justify-center">
+                        <div class="relative flex items-center gap-8 w-full max-w-4xl">
+                            <!-- Title (Left) -->
+                            <div class="flex-1 text-right title-container">
+                                <div class="cursor-pointer" onclick="toggleStep(3)">
+                                    <h4 class="text-2xl font-bold text-white mb-2">Phase 3: SEBI Approval, Marketing &
+                                        Listing</h4>
+                                    <p class="text-sm text-slate-400 font-sans">Approval to Bell Ringing</p>
+                                </div>
+                            </div>
+
+                            <!-- Pin Marker (Center on Road) -->
+                            <div class="relative">
+                                <div class="connector-line connector-line-left"></div>
+                                <div onclick="toggleStep(3)" class="map-pin flex-shrink-0" id="marker-3">
+                                    <div
+                                        class="pin-head bg-gradient-to-br from-iconPurple via-purple-600 to-iconPurple border-4 border-white">
+                                        <div class="pin-number">03</div>
+                                    </div>
+                                    <div class="pin-shadow"></div>
+                                    <div class="icon-badge bg-iconPurple">
+                                        <i class="fa-solid fa-rocket text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content Panel (Right) -->
+                            <div class="flex-1">
+                                <div class="step-content" id="content-3">
+                                    <div
+                                        class="bg-gradient-to-br from-iconPurple/20 to-purple-900/20 backdrop-blur-xl rounded-2xl p-6 border-2 border-iconPurple/40 shadow-2xl text-left">
+
+                                        <div class="space-y-4 font-sans">
+                                            <div>
+                                                <h5 class="text-iconPurple font-bold text-sm mb-1">Regulatory Roadblocks
+                                                </h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Managing responses to
+                                                    SEBI’s observation letters and questionnaires to secure the final
+                                                    observation card.</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconPurple font-bold text-sm mb-1">Roadshows & Price
+                                                    Discovery</h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Organizing domestic
+                                                    and international roadshows with Institutional (QIB) and Retail
+                                                    investors to drive demand, discovering the optimal issue price.</p>
+                                            </div>
+                                            <div>
+                                                <h5 class="text-iconPurple font-bold text-sm mb-1">Listing</h5>
+                                                <p class="text-slate-300 text-xs leading-relaxed">Post-approval
+                                                    management of issue opening, allotment process, and final listing
+                                                    ceremony on the exchanges.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Intermediaries in IPO Process Section -->
+    <section class="py-20 bg-iconDark relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-iconPurple/5 to-transparent"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-white mb-4">
+                    Intermediaries in IPO Process
+                </h2>
+                <p class="text-lg text-slate-300 max-w-3xl mx-auto font-sans">
+                    Professional Groups Engaged for a Successful IPO
+                </p>
+            </div>
+
+            <!-- Circular Infographic -->
+            <div class="relative max-w-6xl mx-auto">
+                <div class="relative" style="min-height: 700px;">
+                    <!-- Center Circle -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                        <div
+                            class="w-48 h-48 rounded-full bg-gradient-to-br from-iconPurple/30 to-iconCyan/30 backdrop-blur-xl border-4 border-white/20 flex items-center justify-center shadow-2xl">
+                            <div class="text-center">
+                                <div class="text-6xl font-bold text-white">7</div>
+                                <div class="text-sm text-slate-300 mt-2">Key Players</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Animated rotating circle -->
+                    <svg class="absolute inset-0 w-full h-full" style="pointer-events: none;">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#7C4DFF;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#00C4FF;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50%" cy="50%" r="35%" fill="none" stroke="url(#grad1)" stroke-width="2"
+                            stroke-dasharray="10,5" opacity="0.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 50% 50%" to="360 50% 50%"
+                                dur="60s" repeatCount="indefinite" />
+                        </circle>
+                    </svg>
+
+                    <!-- Segment 1 - BRLM (Top - 0 deg) -->
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-center"
+                        style="width: 210px; top: 15%; left: 50%;" onclick="toggleIntermediary(1)">
+                        <div
+                            class="intermediary-card bg-gradient-to-br from-iconPurple/20 to-purple-900/20 backdrop-blur-xl rounded-xl p-4 border-2 border-iconPurple/40 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-iconPurple/50">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-iconPurple to-purple-600 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                                1
+                            </div>
+                            <h3 class="text-xl font-bold text-iconPurple mb-3 font-serif">BRLM</h3>
+                            <div id="intermediary-desc-1" class="intermediary-desc">
+                                <p class="text-sm text-slate-300 leading-relaxed font-sans">
+                                    Merchant Bankers who divide the function of being Lead, Post Issue compliance &
+                                    Roadshows
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segment 2 - Legal Attorneys (Top Right - ~51 deg) -->
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-center"
+                        style="width: 210px; top: 28%; left: 77%;" onclick="toggleIntermediary(2)">
+                        <div
+                            class="intermediary-card bg-gradient-to-br from-iconCyan/20 to-blue-900/20 backdrop-blur-xl rounded-xl p-4 border-2 border-iconCyan/40 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-iconCyan/50">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-iconCyan to-blue-500 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                                2
+                            </div>
+                            <h3 class="text-xl font-bold text-iconCyan mb-3 font-serif">Legal Attorneys</h3>
+                            <div id="intermediary-desc-2" class="intermediary-desc">
+                                <p class="text-sm text-slate-300 leading-relaxed font-sans">
+                                    1 Legal team is required for preparation of DRHP while the other is necessary for
+                                    due
+                                    diligence. International Counsel may be necessary in certain cases
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segment 3 - PR Agency (Right - ~103 deg) -->
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-center"
+                        style="width: 210px; top: 58%; left: 84%;" onclick="toggleIntermediary(3)">
+                        <div
+                            class="intermediary-card bg-gradient-to-br from-iconPurple/20 to-purple-900/20 backdrop-blur-xl rounded-xl p-4 border-2 border-iconPurple/40 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-iconPurple/50">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-iconPurple to-purple-600 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                                3
+                            </div>
+                            <h3 class="text-xl font-bold text-iconPurple mb-3 font-serif">PR Agency</h3>
+                            <div id="intermediary-desc-3" class="intermediary-desc">
+                                <p class="text-sm text-slate-300 leading-relaxed font-sans">
+                                    To run the SEBI Mandated paper advertisements, to enable roadshows for retail
+                                    investors,
+                                    press conferences etc.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segment 4 - RTA (Bottom Right - ~154 deg) -->
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-center"
+                        style="width: 210px; top: 82%; left: 65%;" onclick="toggleIntermediary(4)">
+                        <div
+                            class="intermediary-card bg-gradient-to-br from-iconCyan/20 to-blue-900/20 backdrop-blur-xl rounded-xl p-4 border-2 border-iconCyan/40 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-iconCyan/50">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-iconCyan to-blue-500 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                                4
+                            </div>
+                            <h3 class="text-xl font-bold text-iconCyan mb-3 font-serif">RTA</h3>
+                            <div id="intermediary-desc-4" class="intermediary-desc">
+                                <p class="text-sm text-slate-300 leading-relaxed font-sans">
+                                    Responsible for DMAT of securities & also Allotment of shares upon completion of IPO
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segment 5 - Industry Reports (Bottom - ~206 deg) -->
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-center"
+                        style="width: 210px; top: 82%; left: 35%;" onclick="toggleIntermediary(5)">
+                        <div
+                            class="intermediary-card bg-gradient-to-br from-iconPurple/20 to-purple-900/20 backdrop-blur-xl rounded-xl p-4 border-2 border-iconPurple/40 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-iconPurple/50">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-iconPurple to-purple-600 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                                5
+                            </div>
+                            <h3 class="text-xl font-bold text-iconPurple mb-3 font-serif">Industry Reports</h3>
+                            <div id="intermediary-desc-5" class="intermediary-desc">
+                                <p class="text-sm text-slate-300 leading-relaxed font-sans">
+                                    They are usually prepared by professional agencies which prepare an essential part
+                                    of
+                                    the
+                                    DRHP
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segment 6 - Sponsor Bank (Bottom Left - ~257 deg) -->
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-center"
+                        style="width: 210px; top: 58%; left: 16%;" onclick="toggleIntermediary(6)">
+                        <div
+                            class="intermediary-card bg-gradient-to-br from-iconCyan/20 to-blue-900/20 backdrop-blur-xl rounded-xl p-4 border-2 border-iconCyan/40 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-iconCyan/50">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-iconCyan to-blue-500 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                                6
+                            </div>
+                            <h3 class="text-xl font-bold text-iconCyan mb-3 font-serif">Sponsor Bank</h3>
+                            <div id="intermediary-desc-6" class="intermediary-desc">
+                                <p class="text-sm text-slate-300 leading-relaxed font-sans">
+                                    Bankers to the issue is an essential intermediary who enables the escrow account for
+                                    IPO
+                                    Proceeds
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segment 7 - Auditors (Top Left - ~308 deg) -->
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2 text-center"
+                        style="width: 210px; top: 28%; left: 23%;" onclick="toggleIntermediary(7)">
+                        <div
+                            class="intermediary-card bg-gradient-to-br from-iconPurple/20 to-purple-900/20 backdrop-blur-xl rounded-xl p-4 border-2 border-iconPurple/40 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-iconPurple/50">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-iconPurple to-purple-600 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                                7
+                            </div>
+                            <h3 class="text-xl font-bold text-iconPurple mb-3 font-serif">Auditors</h3>
+                            <div id="intermediary-desc-7" class="intermediary-desc">
+                                <p class="text-sm text-slate-300 leading-relaxed font-sans">
+                                    A Peer-reviewed Auditor with proficiency in IPOs & IND AS financial statements
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Note -->
+            <div class="text-center mt-16">
+                <p class="text-sm text-slate-400 font-sans italic">
+                    <i class="fa-solid fa-info-circle mr-2 text-iconCyan"></i>
+                    Amatya Advisors coordinates with all intermediaries to ensure seamless IPO execution
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let activeStep = null;
+
+        function toggleStep(stepNumber) {
+            // Close previously active step
+            if (activeStep !== null && activeStep !== stepNumber) {
+                document.getElementById(`content-${activeStep}`)?.classList.remove('active');
+                document.getElementById(`marker-${activeStep}`)?.classList.remove('active');
+            }
+
+            // Toggle current step
+            const content = document.getElementById(`content-${stepNumber}`);
+            const marker = document.getElementById(`marker-${stepNumber}`);
+
+            if (activeStep === stepNumber) {
+                // Close if clicking the same step
+                content?.classList.remove('active');
+                marker?.classList.remove('active');
+                activeStep = null;
+            } else {
+                // Open new step
+                content?.classList.add('active');
+                marker?.classList.add('active');
+                activeStep = stepNumber;
+            }
+        }
+
+        // Scroll-triggered entrance animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all milestone items
+        document.addEventListener('DOMContentLoaded', () => {
+            const milestones = document.querySelectorAll('.milestone-item');
+            milestones.forEach(milestone => {
+                observer.observe(milestone);
+            });
+        });
+
+        // Intermediaries Toggle Function
+        let activeIntermediary = null;
+
+        function toggleIntermediary(id) {
+            // Close previously active
+            if (activeIntermediary !== null && activeIntermediary !== id) {
+                document.getElementById(`intermediary-desc-${activeIntermediary}`)?.classList.remove('active');
+            }
+
+            // Toggle current
+            const desc = document.getElementById(`intermediary-desc-${id}`);
+
+            if (activeIntermediary === id) {
+                // Close if clicking same
+                desc?.classList.remove('active');
+                activeIntermediary = null;
+            } else {
+                // Open new
+                desc?.classList.add('active');
+                activeIntermediary = id;
+            }
+        }
+    </script>
+
+
+    <footer class="bg-black/40 text-slate-400 py-16 border-t border-white/5 font-sans relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-20">
+                <!-- Col 1: Brand -->
+                <div class="space-y-6">
+                    <!-- Logo -->
+                    <a href="index.html" class="block">
+                        <img src="brand-logo.png" alt="Amatya Advisors"
+                            class="h-16 w-auto object-contain opacity-90 hover:opacity-100 transition">
+                    </a>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <nav class="flex flex-col space-y-3 text-sm font-medium">
+                        <a href="index.html" class="hover:text-iconCyan transition-colors w-fit">Home</a>
+                        <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors w-fit">IPO Advisory</a>
+                        <a href="#" class="hover:text-iconCyan transition-colors w-fit">Private Equity</a>
+                        <a href="private-credit.html" class="hover:text-iconCyan transition-colors w-fit">Private
+                            Credit</a>
+                        <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors w-fit">ICON Capital</a>
+                    </nav>
+                </div>
+
+
+
+                <!-- Col 3: Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Get In Touch</h3>
+                    <div class="space-y-4 text-sm">
+                        <!-- Address -->
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-iconPurple mt-1"></i>
+                            <p class="leading-relaxed">
+                                #4A - The Law Chambers, Silver Cloud,<br>
+                                Opp. KIMS Hospital, Raidurg,<br>
+                                Hyderabad, Telangana, India - 500089
+                            </p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-iconPurple"></i>
+                            <a href="mailto:santosh@iconcapital.club" class="hover:text-iconCyan transition-colors">
+                                santosh@iconcapital.club
+                            </a>
+                        </div>
+
+                        <!-- Social -->
+                        <div class="pt-4">
+                            <h4 class="text-white font-bold mb-3">Follow us on</h4>
+                            <div class="flex gap-3">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-white hover:bg-[#0077b5] transition-colors">
+                                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-white/10 mt-16 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Amatya Advisors. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

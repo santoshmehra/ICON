@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Credit - Amatya Advisors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iconPurple: '#7C4DFF',
+                        iconCyan: '#00C4FF',
+                        iconDark: '#0B0014',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        goudy: ['Goudy Old Style', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+            background: #0B0014;
+            color: #cbd5e1;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-iconDark/90 backdrop-blur-md border-b border-white/10 transition-all duration-500">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html">
+                    <img src="brand-logo.png" alt="Amatya Advisors & ICON Capital" class="h-14 w-auto object-contain">
+                </a>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-base font-bold font-sans text-slate-300">
+                <a href="index.html" class="hover:text-iconCyan transition-colors">Home</a>
+                <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors">IPO Advisory</a>
+                <a href="private-equity.html" class="hover:text-iconCyan transition-colors">Private Equity</a>
+                <a href="private-credit.html" class="text-iconCyan transition-colors">Private Credit</a>
+                <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors">ICON Capital</a>
+                <a href="contact.html" class="hover:text-iconCyan transition-colors">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section for Page -->
+    <header class="relative pt-32 pb-12 lg:pt-40 lg:pb-20 overflow-hidden bg-iconDark">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0B0014] via-[#1a0b2e] to-[#240046] z-0"></div>
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl lg:text-6xl font-serif font-bold text-white mb-4">
+                Private Credit
+            </h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                Fast, flexible, and structured financing via CAT-II AIFs
+            </p>
+        </div>
+    </header>
+
+    <!-- Private Credit Content -->
+    <section class="py-20 bg-transparent">
+        <div class="container mx-auto px-6">
+
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+                    Private Credit via <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-iconCyan to-iconPurple">CAT-II
+                        AIFs</span>
+                </h2>
+                <p class="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+                    Fast, flexible, and structured financing without equity dilution
+                </p>
+            </div>
+
+            <!-- Main Content Card -->
+            <div
+                class="glass-panel rounded-3xl p-[1px] shadow-2xl relative overflow-hidden group border border-white/10 hover:border-iconPurple/30 transition duration-500">
+
+                <!-- Background Glow Effects -->
+                <div
+                    class="absolute top-0 right-0 w-[500px] h-[500px] bg-iconPurple/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-iconPurple/20 transition duration-700">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-iconCyan/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-iconCyan/20 transition duration-700">
+                </div>
+
+                <div class="bg-[#0B0014]/80 backdrop-blur-xl rounded-[23px] p-8 md:p-12 relative z-10">
+
+                    <!-- Timeline Infographic -->
+                    <div class="mb-12">
+                        <div class="flex items-center justify-center gap-4 mb-8">
+                            <div
+                                class="flex-1 h-1 bg-gradient-to-r from-transparent via-iconCyan to-iconCyan rounded-full">
+                            </div>
+                            <div class="text-center">
+                                <div
+                                    class="w-24 h-24 rounded-full bg-gradient-to-br from-iconCyan to-iconPurple flex items-center justify-center mb-2 shadow-lg shadow-iconCyan/50 animate-pulse">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-white">60-75</div>
+                                        <div class="text-[10px] text-white/80 uppercase">Days</div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-400 font-bold uppercase">Execution Timeline</p>
+                            </div>
+                            <div class="flex-1 h-1 bg-gradient-to-r from-iconPurple to-transparent rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <!-- Left Column: Key Highlights -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                <i class="fa-solid fa-bolt text-iconCyan"></i> Key Highlights
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 group/item">
+                                    <div
+                                        class="mt-1 w-6 h-6 rounded-full bg-iconCyan/10 flex items-center justify-center group-hover/item:bg-iconCyan/20 transition">
+                                        <i class="fa-solid fa-check text-iconCyan text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <strong class="text-slate-200 block">Non-Dilutive Capital</strong>
+                                        <span class="text-sm text-slate-400">Raise funds without giving up
+                                            equity.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3 group/item">
+                                    <div
+                                        class="mt-1 w-6 h-6 rounded-full bg-iconPurple/10 flex items-center justify-center group-hover/item:bg-iconPurple/20 transition">
+                                        <i class="fa-solid fa-check text-iconPurple text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <strong class="text-slate-200 block">Flexible Repayment</strong>
+                                        <span class="text-sm text-slate-400">Moratoriums and bullet structures
+                                            available.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3 group/item">
+                                    <div
+                                        class="mt-1 w-6 h-6 rounded-full bg-iconCyan/10 flex items-center justify-center group-hover/item:bg-iconCyan/20 transition">
+                                        <i class="fa-solid fa-check text-iconCyan text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <strong class="text-slate-200 block">Sector Agnostic</strong>
+                                        <span class="text-sm text-slate-400">Open to Manufacturing, SaaS, Infra, and
+                                            more.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Right Column: Ideal For -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                <i class="fa-solid fa-bullseye text-iconPurple"></i> Ideal Use Cases
+                            </h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div
+                                    class="p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition text-center group/card">
+                                    <i
+                                        class="fa-solid fa-layer-group text-2xl text-slate-400 mb-3 group-hover/card:text-iconCyan transition"></i>
+                                    <div class="text-sm font-bold text-slate-200">Acquisition Financing</div>
+                                </div>
+                                <div
+                                    class="p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition text-center group/card">
+                                    <i
+                                        class="fa-solid fa-bridge text-2xl text-slate-400 mb-3 group-hover/card:text-iconPurple transition"></i>
+                                    <div class="text-sm font-bold text-slate-200">Bridge to IPO</div>
+                                </div>
+                                <div
+                                    class="p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition text-center group/card">
+                                    <i
+                                        class="fa-solid fa-industry text-2xl text-slate-400 mb-3 group-hover/card:text-iconCyan transition"></i>
+                                    <div class="text-sm font-bold text-slate-200">Capex Expansion</div>
+                                </div>
+                                <div
+                                    class="p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition text-center group/card">
+                                    <i
+                                        class="fa-solid fa-rotate text-2xl text-slate-400 mb-3 group-hover/card:text-iconPurple transition"></i>
+                                    <div class="text-sm font-bold text-slate-200">Promoter Buyback</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bespoke Financing & Services Section -->
+                    <div class="mt-16 pt-12 border-t border-white/10">
+                        <div class="text-center mb-12">
+                            <span class="text-iconCyan font-bold tracking-wider uppercase text-xs">Strategic
+                                Credit</span>
+                            <h2 class="text-3xl font-serif font-bold text-white mt-2 mb-4">Bespoke Financing for
+                                Non-Dilutive Growth</h2>
+                            <p class="text-slate-400 max-w-4xl mx-auto leading-relaxed">
+                                Our Private Debt practice offers a strategic alternative to equity dilution. We assist
+                                companies in optimizing
+                                their capital stack by accessing flexible, non-bank credit solutions. This serves as a
+                                critical bridge for
+                                high-growth enterprises that wish to extend their cash runway, fund acquisitions, or
+                                unlock working capital
+                                without eroding promoter ownership.
+                            </p>
+                        </div>
+
+                        <!-- 3-Column Services Grid -->
+                        <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                            <!-- A. Venture Debt -->
+                            <div
+                                class="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition duration-300">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6 group-hover:bg-iconCyan/20 transition">
+                                    <i
+                                        class="fa-solid fa-rocket text-xl text-slate-400 group-hover:text-iconCyan transition"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-4 group-hover:text-iconCyan transition">
+                                    Venture Debt <span class="text-sm font-normal text-slate-400 block mt-1">(Runway
+                                        Extension)</span></h3>
+                                <p class="text-sm text-slate-400 mb-6">For high-growth, VC-backed startups, we structure
+                                    specialized debt facilities that complement equity rounds.</p>
+                                <ul class="space-y-3 text-sm text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconCyan mt-1"></i>
+                                        <span><strong>Runway Extension:</strong> Extend cash runway between equity
+                                            rounds to hit higher valuations.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconCyan mt-1"></i>
+                                        <span><strong>Minimizing Dilution:</strong> Non-dilutive capital significantly
+                                            cheaper than equity.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconCyan mt-1"></i>
+                                        <span><strong>Performance Covenants:</strong> Based on recurring revenue/growth,
+                                            not just assets.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- B. Mezzanine & Growth Credit -->
+                            <div
+                                class="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition duration-300">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6 group-hover:bg-iconPurple/20 transition">
+                                    <i
+                                        class="fa-solid fa-chart-line text-xl text-slate-400 group-hover:text-iconPurple transition"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-4 group-hover:text-iconPurple transition">
+                                    Mezzanine & Growth <span
+                                        class="text-sm font-normal text-slate-400 block mt-1">(Scale-Up Capital)</span>
+                                </h3>
+                                <p class="text-sm text-slate-400 mb-6">Hybrid debt instruments sitting between senior
+                                    secured debt and equity for mature companies.</p>
+                                <ul class="space-y-3 text-sm text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconPurple mt-1"></i>
+                                        <span><strong>Acquisition Financing:</strong> Fund competitor acquisitions
+                                            without exhausting cash.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconPurple mt-1"></i>
+                                        <span><strong>Subordinated Debt:</strong> Higher leverage tolerance for capex or
+                                            expansion.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconPurple mt-1"></i>
+                                        <span><strong>Bridge to IPO:</strong> Cover IPO expenses/working capital during
+                                            the "quiet period".</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- C. Special Situations -->
+                            <div
+                                class="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition duration-300">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6 group-hover:bg-iconPink/20 transition">
+                                    <i
+                                        class="fa-solid fa-puzzle-piece text-xl text-slate-400 group-hover:text-iconPink transition"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-4 group-hover:text-iconPink transition">
+                                    Special Situations <span
+                                        class="text-sm font-normal text-slate-400 block mt-1">(Structured Credit)</span>
+                                </h3>
+                                <p class="text-sm text-slate-400 mb-6">Bespoke credit solutions for complex scenarios
+                                    where standard bank financing is unavailable.</p>
+                                <ul class="space-y-3 text-sm text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconPink mt-1"></i>
+                                        <span><strong>Promoter Financing:</strong> LAS or NCDs for promoter equity
+                                            infusion/creep-up.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconPink mt-1"></i>
+                                        <span><strong>Asset-Backed Securitization:</strong> Off-balance-sheet liquidity
+                                            for fintech/NBFCs.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-iconPink mt-1"></i>
+                                        <span><strong>Recapitalization:</strong> Dividend recap to unlock owner
+                                            liquidity without selling.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Execution Process Timeline -->
+                        <div class="relative py-12">
+                            <div class="text-center mb-16">
+                                <h3 class="text-3xl font-serif font-bold text-white mb-2">The Execution Process</h3>
+                                <p class="text-slate-400">From Credit Story to Closure</p>
+                            </div>
+
+                            <div class="relative max-w-6xl mx-auto">
+                                <!-- Connecting Line -->
+                                <div
+                                    class="hidden md:block absolute top-[40px] left-0 right-0 h-0.5 bg-gradient-to-r from-iconCyan via-iconPurple to-iconPink opacity-20 -z-10">
+                                </div>
+
+                                <div class="grid md:grid-cols-4 gap-8">
+                                    <!-- Step 1 -->
+                                    <div class="text-center group">
+                                        <div
+                                            class="w-20 h-20 mx-auto rounded-full bg-[#0F172A] border-2 border-iconCyan shadow-[0_0_20px_rgba(0,196,255,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                                            <span class="font-bold text-iconCyan text-xl">01</span>
+                                        </div>
+                                        <h4
+                                            class="text-xl font-bold text-white mb-2 group-hover:text-iconCyan transition">
+                                            Credit Story</h4>
+                                        <p class="text-sm text-slate-400 leading-relaxed px-2">
+                                            Crafting a "Credit Memo" highlighting cash-flow visibility and unit
+                                            economics.
+                                        </p>
+                                    </div>
+
+                                    <!-- Step 2 -->
+                                    <div class="text-center group">
+                                        <div
+                                            class="w-20 h-20 mx-auto rounded-full bg-[#0F172A] border-2 border-iconPurple shadow-[0_0_20px_rgba(124,77,255,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                                            <span class="font-bold text-iconPurple text-xl">02</span>
+                                        </div>
+                                        <h4
+                                            class="text-xl font-bold text-white mb-2 group-hover:text-iconPurple transition">
+                                            Lender Segmentation</h4>
+                                        <p class="text-sm text-slate-400 leading-relaxed px-2">
+                                            Mapping to Private Credit Funds, Family Offices, or Venture Debt Funds.
+                                        </p>
+                                    </div>
+
+                                    <!-- Step 3 -->
+                                    <div class="text-center group">
+                                        <div
+                                            class="w-20 h-20 mx-auto rounded-full bg-[#0F172A] border-2 border-iconPink shadow-[0_0_20px_rgba(236,72,153,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                                            <span class="font-bold text-iconPink text-xl">03</span>
+                                        </div>
+                                        <h4
+                                            class="text-xl font-bold text-white mb-2 group-hover:text-iconPink transition">
+                                            Term Sheet</h4>
+                                        <p class="text-sm text-slate-400 leading-relaxed px-2">
+                                            Negotiating Price (Spread vs IRR), Tenor, and "Covenant-lite" structures.
+                                        </p>
+                                    </div>
+
+                                    <!-- Step 4 -->
+                                    <div class="text-center group">
+                                        <div
+                                            class="w-20 h-20 mx-auto rounded-full bg-[#0F172A] border-2 border-white shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                                            <i class="fa-solid fa-flag-checkered text-white text-xl"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-white mb-2">Placement & Drawdown</h4>
+                                        <p class="text-sm text-slate-400 leading-relaxed px-2">
+                                            Managing agreements and ensuring CPs are met for timely drawdown.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black/40 text-slate-400 py-16 border-t border-white/5 font-sans relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-20">
+                <!-- Col 1: Brand -->
+                <div class="space-y-6">
+                    <!-- Logo -->
+                    <a href="index.html" class="block">
+                        <img src="brand-logo.png" alt="Amatya Advisors"
+                            class="h-16 w-auto object-contain opacity-90 hover:opacity-100 transition">
+                    </a>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <nav class="flex flex-col space-y-3 text-sm font-medium">
+                        <a href="index.html" class="hover:text-iconCyan transition-colors w-fit">Home</a>
+                        <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors w-fit">IPO Advisory</a>
+                        <a href="#" class="hover:text-iconCyan transition-colors w-fit">Private Equity</a>
+                        <a href="private-credit.html" class="hover:text-iconCyan transition-colors w-fit">Private
+                            Credit</a>
+                        <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors w-fit">ICON Capital</a>
+                    </nav>
+                </div>
+
+
+
+                <!-- Col 3: Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Get In Touch</h3>
+                    <div class="space-y-4 text-sm">
+                        <!-- Address -->
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-iconPurple mt-1"></i>
+                            <p class="leading-relaxed">
+                                #4A - The Law Chambers, Silver Cloud,<br>
+                                Opp. KIMS Hospital, Raidurg,<br>
+                                Hyderabad, Telangana, India - 500089
+                            </p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-iconPurple"></i>
+                            <a href="mailto:santosh@iconcapital.club" class="hover:text-iconCyan transition-colors">
+                                santosh@iconcapital.club
+                            </a>
+                        </div>
+
+                        <!-- Social -->
+                        <div class="pt-4">
+                            <h4 class="text-white font-bold mb-3">Follow us on</h4>
+                            <div class="flex gap-3">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-white hover:bg-[#0077b5] transition-colors">
+                                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-white/10 mt-16 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Amatya Advisors. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

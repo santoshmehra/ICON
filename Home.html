@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amatya Advisors & ICON Capital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iconPurple: '#7C4DFF',
+                        iconCyan: '#00C4FF',
+                        iconDark: '#0B0014',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        goudy: ['Goudy Old Style', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+            background: #0B0014;
+            color: #cbd5e1;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: #00C4FF;
+            border-bottom-color: #00C4FF;
+        }
+
+        .tab-content {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-iconDark/90 backdrop-blur-md border-b border-white/10 transition-all duration-500">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html">
+                    <img src="brand-logo.png" alt="Amatya Advisors & ICON Capital" class="h-14 w-auto object-contain">
+                </a>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-base font-bold font-sans text-slate-300">
+                <a href="index.html" class="hover:text-iconCyan transition-colors">Home</a>
+                <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors">IPO Advisory</a>
+                <a href="private-equity.html" class="hover:text-iconCyan transition-colors">Private Equity</a>
+                <a href="private-credit.html" class="hover:text-iconCyan transition-colors">Private Credit</a>
+                <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors">ICON Capital</a>
+                <a href="contact.html" class="hover:text-iconCyan transition-colors">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-iconDark">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0B0014] via-[#1a0b2e] to-[#240046] z-0"></div>
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/5 backdrop-blur text-iconCyan text-xs font-bold tracking-widest mb-6 border border-white/10">
+                ICON Capital
+            </span>
+            <h1 class="text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                Architects of <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-iconCyan">Growth &
+                    Capital</span>
+            </h1>
+            <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto font-light">
+                Full-stack capital markets and investment advisory.
+                <br class="my-2 block" />
+                Bridging Private Wealth & Public Markets
+            </p>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="py-12 -mt-16 relative z-20">
+        <div class="container mx-auto px-6">
+            <div
+                class="bg-white/5 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/10 border-b-4 border-b-iconPurple flex flex-col md:flex-row items-center justify-between gap-8">
+
+                <!-- Logo & Identity -->
+                <div class="flex items-center gap-4 md:pl-4">
+                    <img src="brand-logo.png" alt="ICON Capital" class="h-14 w-auto">
+                </div>
+
+                <!-- Stats -->
+                <div class="grid md:grid-cols-3 gap-8 text-center flex-1 md:justify-end">
+                    <div class="p-4 rounded-xl hover:bg-white/5 transition">
+                        <div class="text-4xl font-bold text-iconPurple mb-1 whitespace-nowrap">₹500 Cr+</div>
+                        <div class="text-slate-400 text-xs uppercase">Combined Corpus</div>
+                    </div>
+                    <div class="p-4 rounded-xl hover:bg-white/5 transition">
+                        <div class="text-4xl font-bold text-iconCyan mb-1 whitespace-nowrap">12-24 Mo</div>
+                        <div class="text-slate-400 text-xs uppercase">IPO Horizon Focus</div>
+                    </div>
+                    <div class="p-4 rounded-xl hover:bg-white/5 transition">
+                        <div class="text-4xl font-bold text-white mb-1">360°</div>
+                        <div class="text-slate-400 text-xs uppercase">End-to-End Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="py-16 relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto text-center mb-12">
+                <p class="text-xl md:text-2xl text-slate-200 leading-relaxed font-light">
+                    Amatya Advisors stands at the intersection of <span class="text-iconCyan">capital markets</span>,
+                    <span class="text-iconPurple">private equity</span>, and <span class="text-white">structured
+                        finance</span>, offering companies a single integrated platform for:
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Pre-IPO Funding -->
+                <div class="glass-panel rounded-2xl p-6 text-center group hover:-translate-y-1 transition duration-300">
+                    <div
+                        class="w-14 h-14 mx-auto rounded-full bg-iconPurple/20 flex items-center justify-center mb-4 group-hover:bg-iconPurple/30 transition">
+                        <i class="fa-solid fa-sack-dollar text-2xl text-iconPurple"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Pre-IPO Funding</h3>
+                </div>
+
+                <!-- IPO Execution -->
+                <div class="glass-panel rounded-2xl p-6 text-center group hover:-translate-y-1 transition duration-300">
+                    <div
+                        class="w-14 h-14 mx-auto rounded-full bg-iconCyan/20 flex items-center justify-center mb-4 group-hover:bg-iconCyan/30 transition">
+                        <i class="fa-solid fa-list-check text-2xl text-iconCyan"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">IPO Execution & Handholding</h3>
+                </div>
+
+                <!-- PE & M&A -->
+                <div class="glass-panel rounded-2xl p-6 text-center group hover:-translate-y-1 transition duration-300">
+                    <div
+                        class="w-14 h-14 mx-auto rounded-full bg-white/10 flex items-center justify-center mb-4 group-hover:bg-white/20 transition">
+                        <i class="fa-solid fa-handshake text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Private Equity & M&A Advisory</h3>
+                </div>
+
+                <!-- Private Credit -->
+                <div class="glass-panel rounded-2xl p-6 text-center group hover:-translate-y-1 transition duration-300">
+                    <div
+                        class="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-iconPurple/20 to-iconCyan/20 flex items-center justify-center mb-4 group-hover:from-iconPurple/30 group-hover:to-iconCyan/30 transition">
+                        <i class="fa-solid fa-landmark text-2xl text-slate-200"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Private Credit</h3>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Our depth of experience, fund ecosystem, and end-to-end execution capabilities make us a trusted
+                    partner for companies aspiring to scale and list on India’s vibrant public markets.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <section class="py-12 bg-transparent">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-8 border-b border-white/10 pb-4 mb-12">
+                <button onclick="switchTab('ipo')" id="tab-ipo"
+                    class="tab-btn active text-xl font-bold text-slate-400 hover:text-white border-b-2 border-transparent pb-2 transition-all px-4">
+                    IPO Advisory
+                </button>
+                <button onclick="switchTab('pe')" id="tab-pe"
+                    class="tab-btn text-xl font-bold text-slate-400 hover:text-white border-b-2 border-transparent pb-2 transition-all px-4">
+                    Our ICON Capital Fund
+                </button>
+                <button onclick="switchTab('mand')" id="tab-mand"
+                    class="tab-btn text-xl font-bold text-slate-400 hover:text-white border-b-2 border-transparent pb-2 transition-all px-4">
+                    Private Equity & M&A
+                </button>
+                <button onclick="switchTab('credit')" id="tab-credit"
+                    class="tab-btn text-xl font-bold text-slate-400 hover:text-white border-b-2 border-transparent pb-2 transition-all px-4">
+                    Private Credit
+                </button>
+            </div>
+
+            <!-- IPO Synopsis -->
+            <div id="content-ipo" class="tab-content block">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
+                        From Readiness to Listing
+                    </h2>
+                    <p class="text-slate-300 text-lg mb-12 leading-relaxed">
+                        Strategic clarity and precise execution for your public market journey.
+                        We handle everything from board composition and compliance to merchant banker selection and
+                        roadshows.
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-12">
+                        <div class="glass-panel rounded-2xl p-8 text-left group hover:border-iconCyan/50 transition">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-full bg-iconCyan/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-building-columns text-iconCyan text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Mainboard IPO</h3>
+                                    <p class="text-iconCyan font-bold">8–12 Months</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-400">Comprehensive regulatory process for large-scale public
+                                offerings.</p>
+                        </div>
+
+                        <div class="glass-panel rounded-2xl p-8 text-left group hover:border-iconPurple/50 transition">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-full bg-iconPurple/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-rocket text-iconPurple text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">SME IPO</h3>
+                                    <p class="text-iconPurple font-bold">4–6 Months</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-400">Streamlined process for high-growth small and medium
+                                enterprises.</p>
+                        </div>
+                    </div>
+
+                    <a href="ipo-advisory.html"
+                        class="inline-flex items-center gap-2 px-8 py-3 bg-iconCyan/10 text-iconCyan border border-iconCyan/50 rounded-full font-bold hover:bg-iconCyan hover:text-black transition group">
+                        <span>View Full Roadmap</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Private Equity Synopsis -->
+            <div id="content-pe" class="tab-content hidden">
+                <div class="max-w-6xl mx-auto space-y-20">
+
+                    <!-- Section 1: Header/Fund Overview (Image 4) -->
+                    <div class="text-center">
+                        <span
+                            class="inline-block px-4 py-1 rounded-full border border-iconPurple/30 bg-iconPurple/10 text-iconPurple text-xs font-bold tracking-wider uppercase mb-4">
+                            SEBI Registered Category-II AIF
+                        </span>
+                        <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+                            ICON Capital Trust
+                        </h2>
+                        <h3 class="text-xl md:text-2xl text-slate-300 font-sans mb-8">
+                            A Professional Gateway to Private Markets
+                        </h3>
+                        <p class="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+                            <strong>Our Investment Thesis:</strong> Target high-growth companies early at competent
+                            valuations, hold for IPO readiness (6-24 months), and exit via OFS or public markets for
+                            multifold returns.
+                        </p>
+                    </div>
+
+                    <!-- Section 2: The Opportunity/Sweet Spot (Image 3) -->
+                    <div class="glass-panel p-8 rounded-3xl border border-white/10 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-96 h-96 bg-iconCyan/10 blur-[100px] rounded-full"></div>
+
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-bold text-white mb-4">The Hidden Opportunity: Pre-IPO</h3>
+                            <p class="text-slate-400">The sweet spot between startup risk and public market returns.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-6 relative z-10">
+                            <!-- Startup Phase -->
+                            <div
+                                class="p-6 rounded-2xl border border-white/5 bg-white/5 text-center opacity-60 hover:opacity-100 transition">
+                                <i class="fa-solid fa-seedling text-3xl text-slate-400 mb-4"></i>
+                                <h4 class="text-xl font-bold text-white mb-2">Startup (0-3 Yrs)</h4>
+                                <p class="text-xs text-slate-400 mb-4">High Risk • High Failure Rate</p>
+                                <div class="text-sm text-slate-300 bg-black/20 py-2 rounded">Potential: 10-50x</div>
+                            </div>
+
+                            <!-- Pre-IPO Phase (Highlighted) -->
+                            <div
+                                class="p-8 rounded-2xl border-2 border-iconPurple bg-iconPurple/10 text-center transform scale-105 shadow-2xl shadow-iconPurple/20">
+                                <div
+                                    class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-iconPurple text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                    Sweet Spot
+                                </div>
+                                <i class="fa-solid fa-rocket text-4xl text-iconPurple mb-4"></i>
+                                <h4 class="text-2xl font-bold text-white mb-2">Pre-IPO (7-10 Yrs)</h4>
+                                <ul class="text-left text-sm text-slate-300 space-y-2 mb-6 mt-4">
+                                    <li class="flex items-center gap-2"><i
+                                            class="fa-solid fa-check text-iconPurple"></i> Proven Business Model</li>
+                                    <li class="flex items-center gap-2"><i
+                                            class="fa-solid fa-check text-iconPurple"></i> Audited Financials</li>
+                                    <li class="flex items-center gap-2"><i
+                                            class="fa-solid fa-check text-iconPurple"></i> Clear Path to Exit</li>
+                                </ul>
+                                <div
+                                    class="text-lg font-bold text-white bg-iconPurple/20 py-2 rounded border border-iconPurple/30">
+                                    Potential: 2-5x</div>
+                                <p class="text-xs text-iconPurple mt-2 font-bold">Moderate Risk • High Liquidity</p>
+                            </div>
+
+                            <!-- Public Phase -->
+                            <div
+                                class="p-6 rounded-2xl border border-white/5 bg-white/5 text-center opacity-60 hover:opacity-100 transition">
+                                <i class="fa-solid fa-building text-3xl text-slate-400 mb-4"></i>
+                                <h4 class="text-xl font-bold text-white mb-2">Public (10+ Yrs)</h4>
+                                <p class="text-xs text-slate-400 mb-4">Lower Risk • Listed</p>
+                                <div class="text-sm text-slate-300 bg-black/20 py-2 rounded">Potential: 1.2-2x</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="text-center pt-8">
+                        <a href="ICON-Capital.html"
+                            class="inline-flex items-center gap-2 px-8 py-3 bg-iconPurple/10 text-iconPurple border border-iconPurple/50 rounded-full font-bold hover:bg-iconPurple hover:text-white transition group">
+                            <span>View Full Fund Strategy</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Private Equity & M&A Synopsis -->
+            <div id="content-mand" class="tab-content hidden">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
+                            Private Equity & M&A Advisory
+                        </h2>
+                        <p class="text-slate-300 text-lg leading-relaxed max-w-4xl mx-auto">
+                            We assist companies in raising growth capital by matching them with investors whose thesis
+                            aligns with their long-term vision.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-12">
+                        <!-- Minority Stake -->
+                        <div
+                            class="glass-panel rounded-2xl p-8 hover:border-iconPurple/50 transition duration-300 group">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-iconPurple/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-chart-pie text-iconPurple text-xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Minority Stake Sale</h3>
+                            </div>
+                            <ul class="space-y-4 text-slate-400">
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-crosshairs text-iconPurple mt-1"></i>
+                                    <span><strong class="text-slate-200">Targeting:</strong> We screen investors based
+                                        on their past track record, industry focus, and potential portfolio
+                                        synergies.</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-list-check text-iconPurple mt-1"></i>
+                                    <span><strong class="text-slate-200">Readiness:</strong> We prepare companies for
+                                        "Technical & Financial" due diligence by organizing records and governance
+                                        structures.</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-handshake text-iconPurple mt-1"></i>
+                                    <span><strong class="text-slate-200">Deal Structuring:</strong> We negotiate
+                                        critical terms including valuation, board representation, information rights,
+                                        and exit timelines.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Majority Stake -->
+                        <div class="glass-panel rounded-2xl p-8 hover:border-iconCyan/50 transition duration-300 group">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-iconCyan/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-users-viewfinder text-iconCyan text-xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Majority Stake / Buyout</h3>
+                            </div>
+                            <ul class="space-y-4 text-slate-400">
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-user-tie text-iconCyan mt-1"></i>
+                                    <span><strong class="text-slate-200">Partner Selection:</strong> For promoters
+                                        looking to divest a controlling stake, we identify institutional buyers with the
+                                        operational expertise to scale the business further.</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-file-signature text-iconCyan mt-1"></i>
+                                    <span><strong class="text-slate-200">Negotiation:</strong> We focus on securing the
+                                        best valuation while clearly defining the rights and responsibilities of the
+                                        incoming majority partner.</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-door-open text-iconCyan mt-1"></i>
+                                    <span><strong class="text-slate-200">Strategic Exit:</strong> We structure the deal
+                                        to include options for the remaining minority stake, ensuring a complete
+                                        liquidity roadmap for the exiting management.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-8">
+                        <a href="private-equity.html"
+                            class="inline-flex items-center gap-2 px-8 py-3 bg-iconPurple/10 text-iconPurple border border-iconPurple/50 rounded-full font-bold hover:bg-iconPurple hover:text-white transition group">
+                            <span>Know More</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Private Credit Synopsis -->
+            <div id="content-credit" class="tab-content hidden">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
+                            Private Debt & Credit Solutions
+                        </h2>
+                        <p class="text-slate-300 text-lg leading-relaxed max-w-4xl mx-auto">
+                            For companies seeking non-dilutive capital or alternative financing structures, our Private
+                            Debt practice offers bespoke credit solutions. This serves as a critical bridge for
+                            companies that wish to avoid equity dilution or need specialized capital that traditional
+                            bank loans cannot provide.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-12">
+                        <!-- Venture Debt -->
+                        <div class="glass-panel rounded-2xl p-6 hover:bg-white/5 transition duration-300 text-left">
+                            <i class="fa-solid fa-rocket text-3xl text-iconCyan mb-4"></i>
+                            <h4 class="text-xl font-bold text-white mb-2">Venture Debt</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                We facilitate debt raising for high-growth startups to extend their cash runway between
+                                equity rounds. This minimizes dilution for founders while providing the capital needed
+                                to hit valuation milestones.
+                            </p>
+                        </div>
+
+                        <!-- Mezzanine -->
+                        <div class="glass-panel rounded-2xl p-6 hover:bg-white/5 transition duration-300 text-left">
+                            <i class="fa-solid fa-layer-group text-3xl text-iconPurple mb-4"></i>
+                            <h4 class="text-xl font-bold text-white mb-2">Mezzanine Financing</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                We structure hybrid debt-equity instruments that sit between senior debt and equity.
+                                This is often used to fund acquisitions or buyouts where senior lenders have reached
+                                their limits.
+                            </p>
+                        </div>
+
+                        <!-- Structured Credit -->
+                        <div class="glass-panel rounded-2xl p-6 hover:bg-white/5 transition duration-300 text-left">
+                            <i class="fa-solid fa-building-flag text-3xl text-white mb-4"></i>
+                            <h4 class="text-xl font-bold text-white mb-2">Structured Credit & Acquisition Financing</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                We assist in raising capital for special situations, such as promoter financing,
+                                acquisition funding, or bridge loans leading up to an IPO.
+                            </p>
+                        </div>
+
+                        <!-- Yield & Terms -->
+                        <div class="glass-panel rounded-2xl p-6 hover:bg-white/5 transition duration-300 text-left">
+                            <i class="fa-solid fa-file-invoice-dollar text-3xl text-emerald-400 mb-4"></i>
+                            <h4 class="text-xl font-bold text-white mb-2">Yield & Terms</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                We leverage our network of credit funds and NBFCs to negotiate competitive interest
+                                rates and covenants, ensuring the cost of capital is optimized against the company's
+                                cash flow capabilities.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="private-credit.html"
+                            class="inline-flex items-center gap-2 px-8 py-3 bg-white/10 text-white border border-white/20 rounded-full font-bold hover:bg-white hover:text-black transition group">
+                            <span>View Credit Structures</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <footer
+        class="bg-black/40 text-slate-400 py-16 border-t border-white/5 font-sans relative overflow-hidden backdrop-blur-md">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-20">
+                <!-- Col 1: Brand -->
+                <div class="space-y-6">
+                    <!-- Logo -->
+                    <a href="index.html" class="block">
+                        <img src="brand-logo.png" alt="Amatya Advisors"
+                            class="h-16 w-auto object-contain opacity-90 hover:opacity-100 transition">
+                    </a>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <nav class="flex flex-col space-y-3 text-sm font-medium">
+                        <a href="index.html" class="hover:text-iconCyan transition-colors w-fit">Home</a>
+                        <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors w-fit">IPO Advisory</a>
+                        <a href="private-equity.html" class="hover:text-iconCyan transition-colors w-fit">Private
+                            Equity</a>
+                        <a href="private-credit.html" class="hover:text-iconCyan transition-colors w-fit">Private
+                            Credit</a>
+                        <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors w-fit">ICON Capital</a>
+                        <a href="contact.html" class="hover:text-iconCyan transition-colors w-fit">Contact Us</a>
+                    </nav>
+                </div>
+
+                <!-- Col 3: Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Get In Touch</h3>
+                    <div class="space-y-4 text-sm">
+                        <!-- Address -->
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-iconPurple mt-1"></i>
+                            <p class="leading-relaxed">
+                                #4A - The Law Chambers, Silver Cloud,<br>
+                                Opp. KIMS Hospital, Raidurg,<br>
+                                Hyderabad, Telangana, India - 500089
+                            </p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-iconPurple"></i>
+                            <a href="mailto:santosh@iconcapital.club" class="hover:text-iconCyan transition-colors">
+                                santosh@iconcapital.club
+                            </a>
+                        </div>
+
+                        <!-- Social -->
+                        <div class="pt-4">
+                            <h4 class="text-white font-bold mb-3">Follow us on</h4>
+                            <div class="flex gap-3">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-white hover:bg-[#0077b5] transition-colors">
+                                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-white/10 mt-16 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Amatya Advisors. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Hide all content
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active', 'text-iconCyan', 'border-iconCyan', 'text-white', 'text-iconPurple', 'border-iconPurple');
+                el.classList.add('text-slate-400', 'border-transparent');
+            });
+
+            // Show selected content
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('content-' + tabId).classList.add('block');
+
+            // Activate selected button
+            const btn = document.getElementById('tab-' + tabId);
+            btn.classList.remove('text-slate-400', 'border-transparent');
+            btn.classList.add('active', 'text-iconCyan', 'border-iconCyan');
+
+            // Specific color for PE tab if needed, but keeping unified Cyan for active state is cleaner
+            if (tabId === 'pe') {
+                btn.classList.remove('text-iconCyan', 'border-iconCyan');
+                btn.classList.add('text-iconPurple', 'border-iconPurple');
+            }
+        }
+
+        // Initialize default tab (IPO)
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('ipo');
+        });
+    </script>
+</body>
+
+</html>

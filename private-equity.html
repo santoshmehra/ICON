@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Equity - Amatya Advisors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iconPurple: '#7C4DFF',
+                        iconCyan: '#00C4FF',
+                        iconGold: '#D4AF37',
+                        iconDark: '#0B0014',
+                        // New Brand Colors
+                        brandPurple: '#6D48FF',
+                        brandPink: '#D766FF',
+                        brandCyan: '#3EC9FF',
+                    },
+                    backgroundImage: {
+                        'brand-gradient': 'linear-gradient(to right, #6D48FF, #D766FF, #3EC9FF)',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        goudy: ['Goudy Old Style', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+            background: #0B0014;
+            color: #cbd5e1;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(to right, #6D48FF, #D766FF, #3EC9FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .border-gradient-hover:hover {
+            border-color: transparent;
+            background-image: linear-gradient(#131b2e, #131b2e), linear-gradient(to right, #6D48FF, #D766FF, #3EC9FF);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .lifecycle-step {
+            position: relative;
+            z-index: 10;
+        }
+
+        .lifecycle-step::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #6D48FF, #3EC9FF);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .lifecycle-step:last-child::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .lifecycle-step::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 2px;
+                height: 100%;
+                transform: translateX(-50%);
+                background: linear-gradient(to bottom, #6D48FF, #3EC9FF);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-iconDark/90 backdrop-blur-md border-b border-white/10 transition-all duration-500">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html">
+                    <img src="brand-logo.png" alt="Amatya Advisors & ICON Capital" class="h-14 w-auto object-contain">
+                </a>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-base font-bold font-sans text-slate-300">
+                <a href="index.html" class="hover:text-brandCyan transition-colors">Home</a>
+                <a href="ipo-advisory.html" class="hover:text-brandCyan transition-colors">IPO Advisory</a>
+                <a href="private-equity.html" class="text-brandCyan transition-colors">Private Equity</a>
+                <a href="private-credit.html" class="hover:text-brandCyan transition-colors">Private Credit</a>
+                <a href="ICON-Capital.html" class="hover:text-brandCyan transition-colors">ICON Capital</a>
+                <a href="contact.html" class="hover:text-brandCyan transition-colors">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-iconDark">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0B0014] via-[#1a0b2e] to-[#240046] z-0"></div>
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl lg:text-7xl font-serif font-bold text-white mb-6">
+                Private Equity Advisory
+            </h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
+                Strategic Growth Capital & Liquidity Solutions
+            </p>
+        </div>
+    </header>
+
+    <!-- Introductory Logic -->
+    <section class="py-16 relative">
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brandPurple/10 blur-[120px] rounded-full -z-10">
+        </div>
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-xl text-slate-300 leading-relaxed font-light">
+                    Our Private Equity practice is designed not just to raise capital, but to <span
+                        class="text-brandCyan font-medium">onboard the right strategic partners</span> who align with
+                    the
+                    company's long-term vision. We act as the bridge between high-growth enterprises and the global
+                    institutional investment community, managing the entire transaction lifecycle from deal structuring
+                    to final closure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services -->
+    <section class="py-12 relative z-10">
+        <div class="container mx-auto px-6 space-y-24">
+
+            <!-- Section A: Growth Capital -->
+            <div class="glass-panel p-1 rounded-3xl relative overflow-hidden group mb-12">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-brandCyan/10 blur-[80px] rounded-full group-hover:bg-brandCyan/20 transition duration-700">
+                </div>
+
+                <div class="bg-[#0B0014]/80 backdrop-blur-xl rounded-[20px] p-8 lg:p-10">
+                    <!-- Top: Header (Icon + Title side-by-side) -->
+                    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-10 relative z-10">
+                        <!-- Icon -->
+                        <div
+                            class="w-20 h-20 shrink-0 rounded-2xl bg-[#0F172A] border border-white/10 shadow-lg flex items-center justify-center group-hover:scale-110 transition duration-500 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-brand-gradient opacity-10"></div>
+                            <i class="fa-solid fa-chart-line text-4xl text-gradient drop-shadow-sm"></i>
+                        </div>
+
+                        <!-- Title & Description -->
+                        <div class="text-center md:text-left">
+                            <h2 class="text-4xl font-serif font-bold text-white mb-3">Growth Capital <span
+                                    class="text-xl font-sans font-normal text-slate-400 ml-2">(Minority Sale)</span>
+                            </h2>
+                            <p class="text-slate-400 text-lg leading-relaxed max-w-4xl">
+                                For companies seeking capital to fuel expansion while retaining operational control.
+                                We structure minority equity raises that balance <strong class="text-white">capital
+                                    infusion</strong> with <strong class="text-white">governance autonomy</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom: Infographic/Cards Grid (Horizontal 4-col) -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 w-full relative z-10">
+                        <!-- Card 1 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandPurple/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandPurple/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandCyan group-hover/card:bg-brandCyan group-hover/card:text-black transition">
+                                    <i class="fa-solid fa-handshake text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Thesis Matching</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                Rigorous screening of PE funds & Family Offices to identify investors whose sector
+                                focus <span class="text-brandCyan">directly enhances</span> your value proposition.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandPink/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandPink/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandPink group-hover/card:bg-brandPink group-hover/card:text-black transition">
+                                    <i class="fa-solid fa-magnifying-glass-chart text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Investment Readiness</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                Pressure-testing the business model, preparing <strong>"Quality of Earnings"
+                                    (QoE)</strong> assessments, and populating institutional-grade VDRs.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandPurple/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandPurple/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandPurple group-hover/card:bg-brandPurple group-hover/card:text-white transition">
+                                    <i class="fa-solid fa-file-signature text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Deal Structuring</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                Negotiating critical terms: Board representation, voting rights, and anti-dilution
+                                ratification to <span class="text-white">protect founder interests</span>.
+                            </p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandCyan/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandCyan/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandCyan group-hover/card:bg-brandCyan group-hover/card:text-black transition">
+                                    <i class="fa-solid fa-hourglass-half text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Exit Horizon</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                Ensuring the incoming investor’s fund life matches your <strong>liquidity
+                                    roadmap</strong> (e.g., IPO timeline), preventing forced-exit pressure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section B: Control Transactions -->
+            <div class="glass-panel p-1 rounded-3xl relative overflow-hidden group mb-12">
+                <div
+                    class="absolute top-0 left-0 w-64 h-64 bg-brandPink/10 blur-[80px] rounded-full group-hover:bg-brandPink/20 transition duration-700">
+                </div>
+                <div class="bg-[#0B0014]/80 backdrop-blur-xl rounded-[20px] p-8 lg:p-10">
+                    <!-- Top: Header (Icon + Title side-by-side) -->
+                    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-10 relative z-10">
+                        <!-- Icon -->
+                        <div
+                            class="w-20 h-20 shrink-0 rounded-2xl bg-[#0F172A] border border-white/10 shadow-lg flex items-center justify-center group-hover:scale-110 transition duration-500 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-brand-gradient opacity-10"></div>
+                            <i class="fa-solid fa-crown text-4xl text-gradient drop-shadow-sm"></i>
+                        </div>
+
+                        <!-- Title & Description -->
+                        <div class="text-center md:text-left">
+                            <h2 class="text-4xl font-serif font-bold text-white mb-3">Control Transactions <span
+                                    class="text-xl font-sans font-normal text-slate-400 ml-2">(Majority Sale &
+                                    Buyouts)</span></h2>
+                            <p class="text-slate-400 text-lg leading-relaxed max-w-4xl">
+                                For founders looking to monetize wealth or divest a controlling interest. We manage
+                                complex change-of-control transactions with <strong
+                                    class="text-white">sensitivity</strong> and <strong
+                                    class="text-white">precision</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom: Infographic Cards (Horizontal 4-col) -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 w-full relative z-10">
+                        <!-- Card 1 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandPink/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandPink/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandPink group-hover/card:bg-brandPink group-hover/card:text-black transition">
+                                    <i class="fa-solid fa-users text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Partner Stewardship</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                A majority sale is a marriage. We identify buyers with a track record of <span
+                                    class="text-brandPink">stewarding legacy brands</span> and retaining key management
+                                talent.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandPurple/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandPurple/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandPurple group-hover/card:bg-brandPurple group-hover/card:text-white transition">
+                                    <i class="fa-solid fa-arrow-trend-up text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Valuation Maximization</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                We utilize a <strong>"competitive tension"</strong> bidding process to maximize
+                                Enterprise Value, compensating founders for platform value, not just historical
+                                earnings.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandCyan/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandCyan/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandCyan group-hover/card:bg-brandCyan group-hover/card:text-black transition">
+                                    <i class="fa-solid fa-sitemap text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Transition & Governance</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                Structuring the post-transaction framework, defining rights and earn-out structures
+                                to ensure a <span class="text-white">seamless leadership transition</span>.
+                            </p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div
+                            class="bg-[#131b2e] border border-white/5 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-brandPink/10 transition duration-300 group/card h-full relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brandPink/5 to-transparent opacity-0 group-hover/card:opacity-100 transition duration-500">
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-brandPink group-hover/card:bg-brandPink group-hover/card:text-black transition">
+                                    <i class="fa-solid fa-retweet text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Strategic Rollover</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed relative z-10">
+                                We advise on <strong>"Rollover Equity"</strong>, allowing founders to retain a
+                                minority stake and participate in the "second bite of the apple" upon exit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section C: Secondary Transactions -->
+            <div class="glass-panel p-8 lg:p-12 rounded-3xl relative overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-shrink-0">
+                        <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
+                            <i class="fa-solid fa-rotate text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <h2 class="text-2xl font-bold text-white mb-2">Secondary Transactions & Liquidity</h2>
+                        <h3 class="text-lg text-iconCyan font-medium mb-4">Cap Table Rationalization</h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            We assist companies in cleaning up their capitalization table by facilitating secondary
+                            sales—allowing early angel investors or ESOP holders to exit by selling their stakes to
+                            incoming institutional funds without diluting the primary share capital.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Deal Execution Lifecycle Infographic -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-white mb-4">The Deal Execution Lifecycle</h2>
+                <p class="text-slate-400">Our standard banking workflow for seamless execution</p>
+            </div>
+
+            <!-- Lifecycle Steps -->
+            <div class="grid md:grid-cols-4 gap-8 relative max-w-6xl mx-auto">
+
+                <!-- Step 1 -->
+                <div class="lifecycle-step text-center group">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#0B0014] border-2 border-iconCyan shadow-[0_0_20px_rgba(0,196,255,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-compass-drafting text-2xl text-iconCyan"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Preparation Phase</h3>
+                    <p class="text-sm text-slate-400">Business valuation, "Equity Story" crafting, and Teaser/IM
+                        preparation.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="lifecycle-step text-center group">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#0B0014] border-2 border-iconPurple shadow-[0_0_20px_rgba(124,77,255,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-bullhorn text-2xl text-iconPurple"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Marketing Phase</h3>
+                    <p class="text-sm text-slate-400">Roadshows with curated investors and management presentations.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="lifecycle-step text-center group">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#0B0014] border-2 border-iconCyan shadow-[0_0_20px_rgba(0,196,255,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-magnifying-glass text-2xl text-iconCyan"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Due Diligence</h3>
+                    <p class="text-sm text-slate-400">Management of VDR and coordination of legal/financial Q&A.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="lifecycle-step text-center group">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#0B0014] border-2 border-green-500 shadow-[0_0_20px_rgba(34,197,94,0.3)] flex items-center justify-center relative z-10 mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-check-double text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Closing Phase</h3>
+                    <p class="text-sm text-slate-400">Negotiation of SSA/SHA and condition precedent (CP) completion.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/40 text-slate-400 py-16 border-t border-white/5 font-sans relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-20">
+                <!-- Col 1: Brand -->
+                <div class="space-y-6">
+                    <!-- Logo -->
+                    <a href="index.html" class="block">
+                        <img src="brand-logo.png" alt="Amatya Advisors"
+                            class="h-16 w-auto object-contain opacity-90 hover:opacity-100 transition">
+                    </a>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <nav class="flex flex-col space-y-3 text-sm font-medium">
+                        <a href="index.html" class="hover:text-iconCyan transition-colors w-fit">Home</a>
+                        <a href="ipo-advisory.html" class="hover:text-iconCyan transition-colors w-fit">IPO Advisory</a>
+                        <a href="private-equity.html" class="text-iconCyan transition-colors w-fit">Private Equity</a>
+                        <a href="private-credit.html" class="hover:text-iconCyan transition-colors w-fit">Private
+                            Credit</a>
+                        <a href="ICON-Capital.html" class="hover:text-iconCyan transition-colors w-fit">ICON Capital</a>
+                    </nav>
+                </div>
+
+                <!-- Col 3: Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Get In Touch</h3>
+                    <div class="space-y-4 text-sm">
+                        <!-- Address -->
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-iconPurple mt-1"></i>
+                            <p class="leading-relaxed">
+                                #4A - The Law Chambers, Silver Cloud,<br>
+                                Opp. KIMS Hospital, Raidurg,<br>
+                                Hyderabad, Telangana, India - 500089
+                            </p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-iconPurple"></i>
+                            <a href="mailto:santosh@iconcapital.club" class="hover:text-iconCyan transition-colors">
+                                santosh@iconcapital.club
+                            </a>
+                        </div>
+
+                        <!-- Social -->
+                        <div class="pt-4">
+                            <h4 class="text-white font-bold mb-3">Follow us on</h4>
+                            <div class="flex gap-3">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-white hover:bg-[#0077b5] transition-colors">
+                                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-white/10 mt-16 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Amatya Advisors. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
